@@ -2,3 +2,21 @@
 exports.id = function (x) {
   return x;
 };
+
+/* Array operations */
+
+// head :: [a] -> a
+// Extract the first element of a list, which must be non-empty.
+exports.head = function (xs) {
+  if (!Array.isArray(xs) && !(typeof xs == "string")) {
+    throw new TypeError(
+      `Helluva.js: head: Couldn't match expected type 'array', with actual type '${
+        xs === null ? "null" : typeof xs
+      }':\n           ${JSON.stringify(xs)}\n`
+    );
+  } else if (xs.length == 0) {
+    throw "***Helluva.js: head: empty list";
+  } else {
+    return xs[0];
+  }
+};
