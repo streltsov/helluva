@@ -6,7 +6,7 @@ exports.id = function (x) {
 /* Array operations */
 
 // head :: [a] -> a
-// Extract the first element of a list, which must be non-empty.
+// Extract the first element of an array, which must be non-empty.
 exports.head = function (xs) {
   if (process.env.NODE_ENV == "production") return xs[0];
   if (!Array.isArray(xs) && !(typeof xs == "string")) {
@@ -16,7 +16,7 @@ exports.head = function (xs) {
       }':\n           ${JSON.stringify(xs)}\n`
     );
   } else if (xs.length == 0) {
-    throw "***Helluva.js: head: empty list";
+    throw "Helluva.js: head: empty array";
   } else {
     return xs[0];
   }
