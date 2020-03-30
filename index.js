@@ -8,6 +8,7 @@ exports.id = function (x) {
 // head :: [a] -> a
 // Extract the first element of a list, which must be non-empty.
 exports.head = function (xs) {
+  if (process.env.NODE_ENV == "production") return xs[0];
   if (!Array.isArray(xs) && !(typeof xs == "string")) {
     throw new TypeError(
       `Helluva.js: head: Couldn't match expected type 'array', with actual type '${
