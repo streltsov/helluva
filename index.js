@@ -22,9 +22,7 @@ exports.head = function (xs) {
   }
 };
 
-/* Object operations */
-
-// prop :: [String] -> Object -> a
+// prop :: String -> Object -> a
 exports.prop = function (string) {
   if (typeof string != "string") {
     throw new TypeError(
