@@ -79,3 +79,32 @@ exports.props = function (xs) {
     return xs.length != 1 ? props(xs.slice(1))(obj[xs[0]]) : obj[xs[0]];
   };
 };
+
+// mapObj :: (a -> b) -> Object -> Object
+exports.mapObj = function (fn) {
+  if (process.env.NODE_ENV == "production") {
+    return Object.fromEntries(
+      Object.entries(obj).map(el => [el[0], fn(el[1])])
+    );
+  }
+  if (typeof fn != "function") {
+    throw new TypeError(
+      `Helluva.js: mapObj: Couldn't match expected type 'function', with actual type '${
+        fn === null ? "null" : Array.isArray(fn) ? "array" : typeof fn
+      }':\n           ${JSON.stringify(fn)}\n`
+    );
+  }
+  return function (obj) {
+    if (Array.isArray(obj) || typeof obj != "object" || obj === null) {
+      throw new TypeError(
+        `Helluva.js: mapObj: Couldn't match expected type 'object', with actual type '${
+          obj === null ? "null" : Array.isArray(obj) ? "array" : typeof obj
+        }':\n           ${JSON.stringify(obj)}\n`
+      );
+    }
+
+    return Object.fromEntries(
+      Object.entries(obj).map(el => [el[0], fn(el[1])])
+    );
+  };
+};
