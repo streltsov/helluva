@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Helluva.js — Yet another functional programming library</title>
+    <style>
+      body {
+        font-family: monospace;
+        font-size: 16px;
+        color: #333;
+      }
+      code {
+        line-height: 1.4;
+      }
+      header {
+        font-size: 22px;
+        line-height: 0.3;
+      }
+      hr {
+        margin: 32px 0;
+      }
+      code {
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Helluva.js</h1>
+      <span>Yet another functional programming library</span>
+    </header>
+
+    <hr />
+
+    <h2>Arrays</h2>
+    <h3 id="head">head :: [a] -> a</h3>
+    <p>
+      Returns the first element of an array, which must be non-empty
+    </p>
+    <pre>
+      <code>> head([1, 2, 3, 4, 5]);</code>
+      <code>  1</code>
+      <code></code>
+      <code>> head(["john", "mary", "jack", "susan"]);</code>
+      <code>  "john"</code>
+      <code></code>
+      <code>> head([]);</code>
+      <code>  Error: "Helluva.js: head: empty array"</code>
+    </pre>
+  </body>
+</html>
