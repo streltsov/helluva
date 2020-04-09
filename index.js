@@ -22,6 +22,43 @@ exports.head = function (xs) {
   }
 };
 
+// range :: Number -> Number -> [Number]
+//Create an array containing a range of integers, including both endpoints.
+exports.range = function (f) {
+  if (typeof f != "number") {
+    throw new TypeError(
+      `Helluva.js: range: Couldn't match expected type 'number', with actual type '${
+        f === null ? "null" : Array.isArray(f) ? "array" : typeof f
+      }':\n           ${JSON.stringify(f)}\n`
+    );
+  }
+
+  return function (l) {
+    if (typeof l != "number") {
+      throw new TypeError(
+        `Helluva.js: range: Couldn't match expected type 'number', with actual type '${
+          l === null ? "null" : Array.isArray(l) ? "array" : typeof l
+        }':\n           ${JSON.stringify(l)}\n`
+      );
+    }
+
+    let res = [];
+    if (f == l) {
+      res.push(f);
+    } else if (f < l) {
+      for (let i = f; i < l + 1; i++) {
+        res.push(i);
+      }
+    } else if (f > l) {
+      for (let i = f; i > l - 1; i--) {
+        res.push(i);
+      }
+    }
+
+    return res;
+  };
+};
+
 /* Object operations */
 
 // prop :: String -> Object -> a
