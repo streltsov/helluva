@@ -22,6 +22,9 @@
       code {
         font-weight: 600;
       }
+      p {
+        max-width: 66ch;
+      }
     </style>
   </head>
   <body>
@@ -32,7 +35,7 @@
 
     <hr />
 
-    <h2 id="functions">Functions</h2>
+    <h2 id="function">Function</h2>
     <h3 id="id">id :: a -> a</h3>
     <p>
       Returns the same value that was used as its argument
@@ -48,7 +51,7 @@
       <code>  {}</code>
     </pre>
 
-    <h2>Arrays</h2>
+    <h2 id="array">Array</h2>
     <h3 id="head">head :: [a] -> a</h3>
     <p>
       Returns the first element of an array, which must be non-empty
@@ -61,7 +64,24 @@
       <code>  "john"</code>
       <code></code>
       <code>> head([]);</code>
-      <code>  Error: "Helluva.js: head: empty array"</code>
+      <code>  Error: Helluva.js: head: empty array</code>
+    </pre>
+
+    <h2 id="object">Object</h2>
+    <h3 id="prop">prop :: String -> Object -> a</h3>
+    <p>
+      Takes a string and an object and returns corresponding property of object.
+      If property doesn't exist, throws an exeption
+    </p>
+    <pre>
+      <code>> prop ("one") ({"one": 1, "two": 2, "three": 3});</code>
+      <code>  1</code>
+      <code></code>
+      <code>> prop ("name") ({name: "john", surname: "smith", age: 28});</code>
+      <code>  "smith"</code>
+      <code></code>
+      <code>> prop ('two') ({one: 1});</code>
+      <code>  Error: Helluva.js: prop: Object has not own property: two</code>
     </pre>
     <script src="helluva.js"></script>
   </body>
