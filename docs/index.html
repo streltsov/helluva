@@ -32,6 +32,22 @@
 
     <hr />
 
+    <h2 id="functions">Functions</h2>
+    <h3 id="id">id :: a -> a</h3>
+    <p>
+      Returns the same value that was used as its argument
+    </p>
+    <pre>
+      <code>> id([1, 2, 3, 4, 5]);</code>
+      <code>  [1, 2, 3, 4, 5]</code>
+      <code></code>
+      <code>> id(5);</code>
+      <code>  5</code>
+      <code></code>
+      <code>> id({});</code>
+      <code>  {}</code>
+    </pre>
+
     <h2>Arrays</h2>
     <h3 id="head">head :: [a] -> a</h3>
     <p>
@@ -47,6 +63,6 @@
       <code>> head([]);</code>
       <code>  Error: "Helluva.js: head: empty array"</code>
     </pre>
-    <script src='helluva.js'></script>
+    <script src="helluva.js"></script>
   </body>
 </html>
