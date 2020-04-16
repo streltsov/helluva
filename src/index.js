@@ -84,7 +84,7 @@ exports.prop = function (string) {
       );
     }
     if (!obj.hasOwnProperty(string)) {
-      throw `Object has not own property: ${string}`;
+      throw `Helluva.js: prop: Object has not own property: ${string}`;
     }
     return obj[string];
   };
