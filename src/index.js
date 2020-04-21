@@ -1,12 +1,18 @@
+/* Helluva.js */
+/* Yet another functional programming library */
+
+/* Function */
+
 // id :: a -> a
 exports.id = function (x) {
   return x;
 };
 
-/* Array operations */
+/* Array */
 
 // head :: [a] -> a
 // Extract the first element of an array, which must be non-empty.
+
 exports.head = function (xs) {
   if (process.env.NODE_ENV == "production") return xs[0];
   if (!Array.isArray(xs) && !(typeof xs == "string")) {
@@ -23,8 +29,35 @@ exports.head = function (xs) {
 };
 
 // range :: Number -> Number -> [Number]
-//Create an array containing a range of integers, including both endpoints.
+// Creates an array containing a range of integers, including both endpoints.
 exports.range = function (f) {
+  if (process.env.NODE_ENV == "production") {
+    return function (l) {
+      if (typeof l != "number") {
+        throw new TypeError(
+          `Helluva.js: range: Couldn't match expected type 'number', with actual type '${
+            l === null ? "null" : Array.isArray(l) ? "array" : typeof l
+          }':\n           ${JSON.stringify(l)}\n`
+        );
+      }
+
+      let res = [];
+      if (f == l) {
+        res.push(f);
+      } else if (f < l) {
+        for (let i = f; i < l + 1; i++) {
+          res.push(i);
+        }
+      } else if (f > l) {
+        for (let i = f; i > l - 1; i--) {
+          res.push(i);
+        }
+      }
+
+      return res;
+    };
+  }
+
   if (typeof f != "number") {
     throw new TypeError(
       `Helluva.js: range: Couldn't match expected type 'number', with actual type '${
@@ -59,10 +92,19 @@ exports.range = function (f) {
   };
 };
 
-/* Object operations */
+/* Object */
 
 // prop :: String -> Object -> a
 exports.prop = function (string) {
+  /* Production version */
+  if (process.env.NODE_ENV == "production") {
+    return function (obj) {
+      return obj[string];
+    };
+  }
+  /* End of production version */
+
+  /* Development version */
   if (typeof string != "string") {
     throw new TypeError(
       `Helluva.js: prop: Couldn't match expected type 'string', with actual type '${
@@ -88,6 +130,7 @@ exports.prop = function (string) {
     }
     return obj[string];
   };
+  /* End of development version */
 };
 
 // props :: [String] -> Object -> a
