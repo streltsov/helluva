@@ -8,6 +8,19 @@ exports.id = function (x) {
   return x;
 };
 
+// inc :: Number -> Number
+exports.inc = function (num) {
+  if (process.env.NODE_ENV == "production") return xs[0];
+  if (typeof num != 'number') {
+    throw new TypeError(
+      `Helluva.js: inc: Couldn't match expected type 'number', with actual type '${
+        num === null ? "null" : Array.isArray(num) ? 'array' : typeof num
+      }':\n           ${JSON.stringify(num)}\n`
+    );
+  }
+  return num + 1;
+};
+
 /* Array */
 
 // head :: [a] -> a
