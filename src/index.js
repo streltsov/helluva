@@ -5,9 +5,8 @@
 
 // id :: a -> a
 exports.id = function (...args) {
-  if(!args.length) {
-    throw "Helluva.js: id: no argument provided";
-  }
+  if (process.env.NODE_ENV == "production") return args[0];
+  if(!args.length) throw "Helluva.js: id: no argument provided";
   const a = args[0];
   return a;
 };
