@@ -4,8 +4,12 @@
 /* Function */
 
 // id :: a -> a
-exports.id = function (x) {
-  return x;
+exports.id = function (...args) {
+  if(!args.length) {
+    throw "Helluva.js: id: no argument provided";
+  }
+  const a = args[0];
+  return a;
 };
 
 // inc :: Number -> Number
