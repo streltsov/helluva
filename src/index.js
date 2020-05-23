@@ -12,16 +12,17 @@ exports.id = function (...args) {
 };
 
 // inc :: Number -> Number
-exports.inc = function (num) {
-  if (process.env.NODE_ENV == "production") return xs[0];
-  if (typeof num != 'number') {
+exports.inc = function (...num) {
+  if (process.env.NODE_ENV == "production") return args[0] + 1;
+  if(!num.length) throw "Helluva.js: inc: no argument provided";
+  if (typeof num[0] != 'number') {
     throw new TypeError(
       `Helluva.js: inc: Couldn't match expected type 'number', with actual type '${
-        num === null ? "null" : Array.isArray(num) ? 'array' : typeof num
-      }':\n           ${JSON.stringify(num)}\n`
+        num[0] === null ? "null" : Array.isArray(num[0]) ? 'array' : typeof num[0]
+      }':\n           ${JSON.stringify(num[0])}\n`
     );
   }
-  return num + 1;
+  return num[0] + 1;
 };
 
 /* Array */
