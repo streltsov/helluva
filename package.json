@@ -4,7 +4,7 @@
   "description": "Yet another functional programming library",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -17,5 +17,8 @@
   },
   "devDependencies": {
     "jest": "^26.1.0"
+  },
+  "dependencies": {
+    "eslint": "^7.3.1"
   }
 }
