@@ -16,9 +16,8 @@
     "url": "https://github.com/streltsov/helluva/issues"
   },
   "devDependencies": {
+    "eslint": "^7.3.1",
     "jest": "^26.1.0"
   },
-  "dependencies": {
-    "eslint": "^7.3.1"
-  }
+  "dependencies": {}
 }
