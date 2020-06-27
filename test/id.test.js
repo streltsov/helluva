@@ -2,7 +2,6 @@ const { id } = require("../src/Function/id");
 
 test.each([
   null,
-  undefined,
   true,
   100,
   -400,
@@ -16,3 +15,9 @@ test.each([
   Symbol("helluva"),
   9007199254740992n
 ])("should return %p", a => expect(id(a)).toBe(a));
+
+test("throw exception if no argument provided", () => {
+  expect(() => {
+    id();
+  }).toThrow("Helluva.js: id: Expected one argument but received zero arguments");
+});
